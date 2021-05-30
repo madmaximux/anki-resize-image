@@ -88,9 +88,12 @@ def receive_corrected_value(handled, cmd, editor):
         return handled
     if not cmd.startswith("without_resize"):
         return handled
+
     (handled, callback_value) = handled
     (without_resize, cmd) = cmd.split(":", 1)
+    currentField = editor.currentField
     editor.onBridgeCmd(cmd)
+    editor.currentField = currentField
     return (True, callback_value)
 
 gui_hooks.webview_did_receive_js_message.append(receive_corrected_value)
