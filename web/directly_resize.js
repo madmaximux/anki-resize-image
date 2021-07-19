@@ -19,3 +19,9 @@ function $resizeImagesInField($editable){ // jquery selection of editable.Editab
     $imgs.css("max-width", "100%");
     $imgs.css("max-height", "100%");
 }
+
+function resizeCurrentField() {
+    const current_editing_area = getCurrentField();
+    const current_editable = current_editing_area.editable;
+    $resizeImagesInField($(current_editable));
+}

@@ -97,3 +97,9 @@ def receive_corrected_value(handled, cmd, editor):
     return (True, callback_value)
 
 gui_hooks.webview_did_receive_js_message.append(receive_corrected_value)
+
+old_doPaste = Editor.doPaste
+def doPaste(editor: Editor, html: str, internal: bool, extended: bool = False) -> None:
+    old_doPaste(editor, html, internal, extended)
+    editor.web.eval("resizeCurrentField()")
+Editor.doPaste = doPaste
