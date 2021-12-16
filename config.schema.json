@@ -24,12 +24,12 @@
       "default": true
     },
     "max-height": {
-      "type": "integer",
+      "type": ["integer", "string"],
       "description": "The maximum height of image by default, if \"apply maximum height when not resizing\" is checked.",
       "default": 200
     },
     "max-width": {
-      "type": "integer",
+      "type": ["integer", "string"],
       "description": "The maximum width of image by default, if \"apply maximum width when not resizing\" is checked.",
       "default": 200
     },

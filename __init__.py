@@ -46,7 +46,10 @@ def setBrowserResizeImage(web_content, context):
         for direction in ["width", "height"]:
             if getUserOption(f"apply {m}imum {direction}{suffix}", False):
                 limit = getUserOption(f"{m}-{direction}", default)
-                css.append(f"""img {{{m}-{direction}: {limit}px}}""")
+                if str(limit).isdigit():
+                    css.append(f"""img {{{m}-{direction}: {limit}px}}""")
+                else:
+                    css.append(f"""img {{{m}-{direction}: {limit}}}""")
                 js.append(f"""const {m}_{direction} = "{limit}";""")
             else:
                 js.append(f"""const {m}_{direction} = null;""")
